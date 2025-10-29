@@ -1,37 +1,72 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ShowcaseHub | Home</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Home — Student Portfolio</title>
   <link rel="stylesheet" href="../styles/style.css" />
 </head>
 <body>
-  <header>
-    <nav class="navbar">
-      <h1 class="logo">ShowcaseHub</h1>
-      <ul class="nav-links">
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="skills.html">Skills</a></li>
-        <li><a href="achievements.html">Achievements</a></li>
-        <li><a href="profile.html">Profile</a></li>
-      </ul>
-    </nav>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">Showcase Hub</a>
+      <nav class="nav" id="mainNav">
+        <a href="index.html">Home</a>
+        <a href="profile.html">Profile</a>
+        <a href="projects.html">Projects</a>
+        <a href="skills.html">Skills</a>
+        <a href="achievements.html">Achievements</a>
+      </nav>
+      <button class="menu-toggle" id="menuToggle" aria-label="toggle menu">☰</button>
+    </div>
   </header>
 
-  <section class="hero">
-    <div class="hero-content">
-      <h2>Welcome to ShowcaseHub</h2>
-      <p>
-        Explore my developer journey — projects, skills, and achievements that define my growth.
-      </p>
-      <a href="projects.html" class="btn">Explore Projects</a>
-    </div>
-  </section>
+  <main>
+    <section class="hero container" id="home">
+      <div class="hero-left">
+        <h1>Student Portfolio Showcase</h1>
+        <p class="lead">A clean, responsive portfolio template made for the course assignment. Built with plain HTML & CSS — single stylesheet, multi-page structure, and responsive breakpoints.</p>
+        <div class="hero-cta">
+          <a class="btn" href="projects.html">See Projects</a>
+          <a class="btn btn-outline" href="profile.html">About Me</a>
+        </div>
+      </div>
+      <div class="hero-right">
+        <img class="hero-image" src="https://via.placeholder.com/520x360.png?text=Student+Portfolio" alt="portfolio showcase">
+      </div>
+    </section>
 
-  <footer>
-    <p>© 2025 ShowcaseHub | Designed by Sudais</p>
+    <section class="container features">
+      <article class="feature-card">
+        <h3>Feature-branch workflow</h3>
+        <p>Followed Git flow with protected branches, PR reviews, and rebases to keep history clean.</p>
+      </article>
+
+      <article class="feature-card">
+        <h3>Pixel-perfect pages</h3>
+        <p>Consistent header/footer and a shared stylesheet to reduce merge conflicts in styles.</p>
+      </article>
+
+      <article class="feature-card">
+        <h3>Responsive design</h3>
+        <p>At least five media queries ensure layout looks good on mobile, tablet and desktop.</p>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© 2025 Student Portfolio — Built by Sudais Sarfraz</p>
+    </div>
   </footer>
+
+  <script>
+    const toggle = document.getElementById('menuToggle');
+    const nav = document.getElementById('mainNav');
+    toggle.addEventListener('click', ()=> nav.classList.toggle('open'));
+    document.querySelectorAll('.nav a').forEach(a=>{
+      a.addEventListener('click', ()=> nav.classList.remove('open'));
+    });
+  </script>
 </body>
 </html>

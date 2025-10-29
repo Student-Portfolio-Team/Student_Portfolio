@@ -1,192 +1,126 @@
-/* === Global Reset === */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+/* ========= Common variables & reset ========= */
+:root{
+  --bg:#ffffff;
+  --muted:#6b6b6b;
+  --txt:#111214;
+  --primary:#0b5cff;
+  --muted-2:#9aa3b2;
+  --card:#fbfdff;
+  --shadow: 0 8px 24px rgba(13,18,30,0.06);
+  --maxw:1100px;
+  --radius:12px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color:var(--txt);
+  background:var(--bg);
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+}
+.container{max-width:var(--maxw);margin:0 auto;padding:1.25rem}
+
+/* ========= Header ========= */
+.site-header{position:sticky;top:0;background:#fff;border-bottom:1px solid #f0f2f7;z-index:60}
+.header-inner{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.75rem 0}
+.brand{font-weight:700;color:var(--txt);text-decoration:none;font-size:1.125rem}
+.nav{display:flex;gap:.5rem;align-items:center}
+.nav a{padding:.5rem .65rem;border-radius:8px;color:var(--txt);text-decoration:none}
+.nav a:hover{background:#f5f8ff;color:var(--primary)}
+.nav a.active{background:#eef3ff;color:var(--primary);font-weight:600}
+.menu-toggle{display:none;background:none;border:0;font-size:1.2rem}
+
+/* ========= Hero / Home ========= */
+.hero{display:grid;grid-template-columns:1fr 520px;gap:2rem;align-items:center;padding:3rem 0}
+.hero-left h1{font-size:2rem;margin-bottom:.5rem}
+.lead{color:var(--muted);margin-bottom:1rem}
+.hero-image{width:100%;height:auto;border-radius:12px;box-shadow:var(--shadow)}
+.hero-cta{display:flex;gap:.75rem}
+.btn{display:inline-block;padding:.6rem 0.95rem;border-radius:10px;background:var(--primary);color:#fff;text-decoration:none}
+.btn-outline{background:transparent;color:var(--primary);border:1px solid var(--primary);padding:.55rem .9rem}
+
+/* ========= Panels ========= */
+.panel{padding:2rem 0}
+.feature-card{background:var(--card);padding:1rem;border-radius:12px;box-shadow:var(--shadow);margin-bottom:1rem}
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;padding:2rem 0}
+
+/* ========= Profile grid ========= */
+.profile-panel{padding:2.25rem 0}
+.profile-grid{display:grid;grid-template-columns:320px 1fr;gap:1.25rem;align-items:start}
+.profile-photo img{width:100%;border-radius:12px;box-shadow:var(--shadow)}
+.profile-details h1{margin-bottom:.25rem}
+.muted{color:var(--muted)}
+.small{font-size:.9rem}
+
+/* ========= Projects ========= */
+.projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.project-card{background:var(--card);border-radius:10px;overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column}
+.project-card img{width:100%;display:block}
+.project-body{padding:1rem}
+
+/* ========= Skills ========= */
+.skill-item{margin-bottom:1rem}
+.skill-meta{display:flex;justify-content:space-between;margin-bottom:.45rem;font-weight:600}
+.progress{background:#eef3f9;border-radius:999px;height:12px;overflow:hidden}
+.progress-bar{height:100%;background:linear-gradient(90deg,var(--primary),#6f9aff);border-radius:999px;transition:width .7s ease}
+
+/* ========= Achievements ========= */
+.achievements-list{padding-left:1.2rem;list-style:disc;line-height:1.6}
+
+/* ========= Footer ========= */
+.site-footer{border-top:1px solid #f0f2f7;padding:1rem 0;margin-top:2rem}
+.footer-inner{display:flex;justify-content:space-between;align-items:center;gap:1rem}
+.footer-nav{display:flex;gap:.75rem}
+
+/* ========= Utilities ========= */
+.container.center{display:flex;align-items:center;justify-content:center}
+
+/* ========= Responsive breakpoints (5+ media queries) ========= */
+
+/* MQ 1: <= 1200px */
+@media (max-width:1200px){
+  :root{--maxw:980px}
+  .projects-grid{grid-template-columns:repeat(2,1fr)}
+  .features{grid-template-columns:repeat(2,1fr)}
 }
 
-body {
-  background-color: #f5f8fb;
-  color: #333;
-  line-height: 1.6;
+/* MQ 2: <= 992px */
+@media (max-width:992px){
+  .hero{grid-template-columns:1fr 360px;gap:1rem}
+  .profile-grid{grid-template-columns:1fr}
+  .hero-left{text-align:left}
+  .nav a{padding:.45rem .6rem}
 }
 
-/* === Navbar === */
-header {
-  background: #1e3a8a;
-  color: #fff;
-  padding: 1rem 0;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+/* MQ 3: <= 768px (tablet) */
+@media (max-width:768px){
+  .menu-toggle{display:block}
+  .nav{position:absolute;right:1rem;top:64px;background:#fff;padding:.75rem;border-radius:10px;box-shadow:0 12px 30px rgba(12,20,40,0.08);flex-direction:column;display:none}
+  .nav.open{display:flex}
+  .hero{grid-template-columns:1fr;gap:1rem}
+  .projects-grid{grid-template-columns:1fr}
+  .features{grid-template-columns:1fr}
 }
 
-.navbar {
-  width: 90%;
-  margin: auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+/* MQ 4: <= 480px (mobile) */
+@media (max-width:480px){
+  .hero-left h1{font-size:1.4rem}
+  .brand{font-size:1rem}
+  .hero{padding:1.25rem 0}
+  .header-inner{padding:.5rem 0}
+  .profile-grid{grid-template-columns:1fr}
 }
 
-.logo {
-  font-size: 1.5rem;
-  font-weight: 700;
+/* MQ 5: <= 380px (small phones) */
+@media (max-width:380px){
+  .lead{font-size:.95rem}
+  .btn{padding:.45rem .7rem}
+  .profile-photo{display:flex;justify-content:center}
+  .projects-grid{gap:.6rem}
 }
 
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 1.5rem;
-}
-
-.nav-links a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: 500;
-  transition: 0.3s;
-}
-
-.nav-links a:hover,
-.nav-links a.active {
-  color: #93c5fd;
-}
-
-/* === Hero Section === */
-.hero {
-  height: 85vh;
-  background: linear-gradient(to right, #1e3a8a, #3b82f6);
-  color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 2rem;
-}
-
-.hero-content h2 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-}
-
-.hero-content p {
-  font-size: 1.1rem;
-  margin-bottom: 2rem;
-}
-
-.btn {
-  background: #fff;
-  color: #1e3a8a;
-  padding: 0.7rem 1.5rem;
-  border-radius: 30px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: 0.3s;
-}
-
-.btn:hover {
-  background: #93c5fd;
-  color: #fff;
-}
-
-/* === Page Sections === */
-.page {
-  width: 90%;
-  margin: 2rem auto;
-  text-align: center;
-}
-
-.section-title {
-  font-size: 2rem;
-  color: #1e3a8a;
-  margin-bottom: 1.5rem;
-  font-weight: 700;
-}
-
-/* === Cards & Grids === */
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-}
-
-.card {
-  background: #fff;
-  padding: 1.5rem;
-  border-radius: 15px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transition: 0.3s;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-}
-
-.card h3 {
-  color: #1e3a8a;
-  margin-bottom: 0.5rem;
-}
-
-/* === Skills List === */
-.skills-list {
-  list-style: none;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 1rem;
-}
-
-.skills-list li {
-  background: #fff;
-  padding: 1rem;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  font-weight: 500;
-}
-
-/* === Profile Page === */
-.profile-card {
-  background: #fff;
-  max-width: 400px;
-  margin: 2rem auto;
-  padding: 2rem;
-  border-radius: 15px;
-  text-align: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.profile-img {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  margin-bottom: 1rem;
-}
-
-.bio {
-  margin: 1rem 0;
-  color: #555;
-}
-
-/* === Footer === */
-footer {
-  background: #1e3a8a;
-  color: #fff;
-  text-align: center;
-  padding: 1rem;
-  margin-top: 2rem;
-  font-size: 0.9rem;
-}
-
-/* === Responsive === */
-@media (max-width: 768px) {
-  .nav-links {
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .hero-content h2 {
-    font-size: 2rem;
-  }
-
-  .section-title {
-    font-size: 1.6rem;
-  }
+/* Accessibility: reduce motion */
+@media (prefers-reduced-motion:reduce){
+  *{transition:none !important}
 }
